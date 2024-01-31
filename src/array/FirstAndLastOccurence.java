@@ -64,8 +64,7 @@ public class FirstAndLastOccurence {
 }*/
 
 
-class Solution
-{
+/*class Solution {
     // TC: O(2logn) = O(logn)
     ArrayList<Integer> find(int arr[], int n, int x)
     {
@@ -108,6 +107,69 @@ class Solution
         ans.add(last);
 
         return ans;
+    }
+}*/
+
+class Solution {
+    // TC:- O(logn)
+    public static int firstOcc (int[] a, int target)
+    {
+        int low = 0;
+        int high = a.length - 1;
+        int fo = -1;
+
+        while (low <= high)
+        {
+            int mid = (low + high)/2;
+
+            if (a[mid] == target){
+                fo = mid;
+                high = mid - 1;
+            }
+            else if (a[mid] > target){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+
+        return fo;
+    }
+
+    // TC:- O(logn)
+    public static int lastOcc (int[] a, int target)
+    {
+        int low = 0;
+        int high = a.length - 1;
+        int lo = -1;
+
+        while (low <= high)
+        {
+            int mid = (low + high)/2;
+
+            if (a[mid] == target){
+                lo = mid;
+                low = mid + 1;
+            }
+            else if (a[mid] > target){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        return lo;
+    }
+
+    // TC:- O(2logn) = O(logn)
+    public ArrayList<Integer> find(int[] nums,  int n, int target) {
+        int fo = firstOcc(nums, target);
+        int lo = lastOcc(nums, target);
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        res.add(fo);
+        res.add(lo);
+        return res;
     }
 }
 
