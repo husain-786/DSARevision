@@ -110,6 +110,7 @@ public class FirstAndLastOccurence {
     }
 }*/
 
+
 class Solution {
     // TC:- O(logn)
     public static int firstOcc (int[] a, int target)
